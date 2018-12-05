@@ -1,21 +1,11 @@
-function getRepositories() {
-  const req = new XMLHttpRequest();
-  req.addEventListener('load', showRepositories);
-  req.open('GET', 'https://api.github.com/users/octocat/repos');
-  req.send();
-}
-
-function showRepositories(event, data) {
-  const repos = JSON.parse(this.responseText);
-  const src = document.getElementById('repository-template').innerHTML;
-  const template = Handlebars.compile(src);
-  const repoList = template(repos);
-  document.getElementById('repositories').innerHTML = repoList;
-}
-
-document.addEventListener('DOMContentLoaded', function(event) {
-  Handlebars.registerPartial(
-    'authorPartial',
-    document.getElementById('author-partial-template').innerHTML
-  );
+// We should wait for the page to load before running our Ajax request
+$(document).ready(function() {
+    // Now we start the Ajax GET request. The first parameter is the URL with the data.
+    // The second parameter is a function that handles the response.
+    $.get('sentence.html', function(response) {
+      debugger
+        // Here we are getting the element on the page with the id of sentences and
+        // inserting the response
+        $('#sentences').html(response);
+    });
 });
