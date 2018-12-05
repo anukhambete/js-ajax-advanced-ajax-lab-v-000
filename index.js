@@ -6,10 +6,10 @@ function getRepositories() {
 }
 
 function showRepositories(event, data) {
-  const repos = JSON.parse(this.responseText);
+  const repos1 = JSON.parse(this.responseText);
   const src = document.getElementById('repository-template').innerHTML;
   const template = Handlebars.compile(src);
-  const repoList = template(repos);
+  const repoList = template(repos1);
   document.getElementById('repositories').innerHTML = repoList;
 }
 
